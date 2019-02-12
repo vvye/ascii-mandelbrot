@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>mandelbrot</title>
+        <style type="text/css">
+            body {
+                font-family: monospace;
+                white-space: pre;
+                font-size: 2px;
+                line-height: 3px;
+                letter-spacing: -3px;
+            }
+        </style>
+    </head>
+    <body><script type="text/javascript">
+            for (let y = -1.2; y < 1.2; y += 0.01) {
+                for (let x = -2; x < 2; x += 0.006) {
+                    let a = x;
+                    let b = y;
+                    let origA = a;
+                    let origB = b;
+                    let k = 0;
+                    while(++k < 100) {
+                        let newA = a * a - b * b;
+                        let newB = 2 * a * b;
+                        a = newA + origA;
+                        b = newB + origB;
+                        if (a * a + b * b > 4) {
+                            break;
+                        }
+                    }
+                    let c = k === 100 ? '#' : k < 5 ? ' ' : k < 10 ? '.' : '+';
+                    document.write(c);
+                }
+                document.write('<br />');
+            }
+        </script>
+    </body>
+</html>
